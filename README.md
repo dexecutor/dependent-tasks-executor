@@ -1,4 +1,6 @@
 # Dexecutor
+
+[![Join the chat at https://gitter.im/dexecutor/dependent-tasks-executor](https://badges.gitter.im/dexecutor/dependent-tasks-executor.svg)](https://gitter.im/dexecutor/dependent-tasks-executor?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Build Status](https://travis-ci.org/dexecutor/dependent-tasks-executor.svg?branch=master)](https://travis-ci.org/dexecutor/dependent-tasks-executor)
 [![Coverage Status](https://coveralls.io/repos/github/dexecutor/dependent-tasks-executor/badge.svg?branch=master)](https://coveralls.io/github/dexecutor/dependent-tasks-executor?branch=master)
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.github.dexecutor/dependent-tasks-executor/badge.svg)](https://maven-badges.herokuapp.com/maven-central/com.github.dexecutor/dependent-tasks-executor)
