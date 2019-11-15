@@ -21,7 +21,7 @@ import com.github.dexecutor.core.graph.DependencyAware;
 import com.github.dexecutor.core.graph.Traversar;
 import com.github.dexecutor.core.graph.TraversarAction;
 import com.github.dexecutor.core.task.ExecutionResults;
-import com.sun.tools.javac.util.Pair;
+import javafx.util.Pair;
 
 import java.util.List;
 

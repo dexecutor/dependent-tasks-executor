@@ -24,7 +24,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
-import com.sun.tools.javac.util.Pair;
+import javafx.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -141,7 +141,7 @@ public class DefaultDexecutor <T, R> implements Dexecutor<T, R> {
 	}
 
 	public List<Pair<T,R>> getAllProcessedResult() {
-		return this.state.getProcessedNodes().stream().map(n -> Pair.of(n.getValue(), n.getResult())).collect(Collectors.toList());
+		return this.state.getProcessedNodes().stream().map(n -> new Pair<T, R>(n.getValue(), n.getResult())).collect(Collectors.toList());
 	}
 
 	private void shutdownExecutors() {

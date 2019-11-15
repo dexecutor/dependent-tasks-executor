@@ -27,7 +27,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-import com.sun.tools.javac.util.Pair;
+import javafx.util.Pair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -119,7 +119,7 @@ public class DexecutorTest {
     List<Pair<Integer, Integer>> allResult = executor.getAllProcessedResult();
     assertEquals("size of task execute result should be 3", 3, allResult.size());
     allResult.forEach(pair ->
-      assertEquals(pair.fst + "st task execute result should be " + pair.fst, pair.fst, pair.snd)
+      assertEquals(pair.getKey() + "st task execute result should be " + pair.getKey(), pair.getKey(), pair.getValue())
     );
   }
 	
