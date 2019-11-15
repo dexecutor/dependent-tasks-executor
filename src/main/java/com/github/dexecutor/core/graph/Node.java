@@ -46,7 +46,7 @@ public final class Node<T, R> implements Serializable {
 	 */
 	private NodeStatus status;
 	/**
-	 * Arbitray data of this node
+	 * Arbitrary data of this node
 	 */
 	private Object data;
 	/**

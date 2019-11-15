@@ -21,6 +21,9 @@ import com.github.dexecutor.core.graph.DependencyAware;
 import com.github.dexecutor.core.graph.Traversar;
 import com.github.dexecutor.core.graph.TraversarAction;
 import com.github.dexecutor.core.task.ExecutionResults;
+import com.sun.tools.javac.util.Pair;
+
+import java.util.List;
 
 /**
  * Main Interface for Dexecutor framework, It provides api to build the graph and and to kick off the execution.
@@ -41,6 +44,12 @@ public interface Dexecutor<T, R> extends DependencyAware<T> {
 	 * @return {@link ExecutionResults} the results
 	 */
 	ExecutionResults<T, R> execute(final ExecutionConfig config);
+
+	/**
+	 * get all processed task execute result list
+	 * @return all task execute result
+	 */
+	public List<Pair<T,R>> getAllProcessedResult();
 
 	/**
 	 * After a dexecutor crash, create a new instance of dexecutor and call this method for recovery

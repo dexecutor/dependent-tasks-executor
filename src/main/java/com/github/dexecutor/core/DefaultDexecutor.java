@@ -17,15 +17,14 @@
 
 package com.github.dexecutor.core;
 
-import java.util.Collection;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
+import com.sun.tools.javac.util.Pair;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -137,8 +136,12 @@ public class DefaultDexecutor <T, R> implements Dexecutor<T, R> {
 
 		logger.debug("Total Time taken to process {} jobs is {} ms.", this.state.graphSize(), end - start);
 		logger.debug("Processed Nodes Ordering {}", this.state.getProcessedNodes());
-		
+
 		return this.state.getErrored();
+	}
+
+	public List<Pair<T,R>> getAllProcessedResult() {
+		return this.state.getProcessedNodes().stream().map(n -> Pair.of(n.getValue(), n.getResult())).collect(Collectors.toList());
 	}
 
 	private void shutdownExecutors() {

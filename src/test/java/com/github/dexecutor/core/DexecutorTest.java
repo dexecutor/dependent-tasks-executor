@@ -18,13 +18,16 @@
 package com.github.dexecutor.core;
 
 import static org.hamcrest.CoreMatchers.equalTo;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
+import com.sun.tools.javac.util.Pair;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
@@ -106,7 +109,19 @@ public class DexecutorTest {
 
 		executor.execute(ExecutionConfig.TERMINATING);
 	}
-	
+
+  @Test
+  public void testGetAllProcessedResult() {
+    DefaultDexecutor<Integer, Integer> executor = newTaskExecutor(false);
+    executor.addDependency(1, 2);
+    executor.addDependency(1, 3);
+    executor.execute(new ExecutionConfig().scheduledRetrying(1, new Duration(1, TimeUnit.SECONDS)));
+    List<Pair<Integer, Integer>> allResult = executor.getAllProcessedResult();
+    assertEquals("size of task execute result should be 3", 3, allResult.size());
+    allResult.forEach(pair ->
+      assertEquals(pair.fst + "st task execute result should be " + pair.fst, pair.fst, pair.snd)
+    );
+  }
 	
 	private DefaultDexecutor<Integer, Integer> newTaskExecutor() {
 		DexecutorConfig<Integer, Integer> config = new DexecutorConfig<>(newExecutor(), new DummyTaskProvider(false));
